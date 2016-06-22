@@ -1,0 +1,18 @@
+ChatModule.controller('ChatController', ['$scope', '$filter', 'ChatService', function ($scope, $filter, ChatService) {
+
+    $scope.ChatDropdownOptions = ChatService.ChatDropdownOptions;
+    $scope.ChatData = ChatService.ChatData;
+    $scope.Message = "";
+    $scope.status = ChatService.CurrentStatus;
+    $scope.SendMessage = function () {
+        ChatService.SendMessage($scope.Message);
+        $scope.Message = '';
+    };
+    $scope.status = ChatService.CurrentStatus;
+    $scope.CurrentUser = ChatService.CurrentUser;
+    $scope.UpdateStatus = function (statusObject) {
+        ChatService.UpdateDropdownStatus(statusObject);
+        $scope.status = ChatService.CurrentStatus;
+    };
+
+}]);
